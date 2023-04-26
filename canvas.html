@@ -1,22 +1,31 @@
 <html>
-
+    <style>
+        button{
+         width: 90px;
+        height: 30px;
+        font-size: 16px;
+        background: blue;
+        border-radius: 3px;
+        margin: 30px;
+        }
+    </style>
 <body>
-    <canvas id='canvas' width="500px" height="400" style="border:2px solid #000"></canvas>
-    <button id="btn" onclick="Toggle()">happy</button>
+    <canvas id='canvas' width="500px" height="400" style=" background-color: blue;border-radius: 5px;"></canvas>
+    <button id="btn" onclick="Toggle()">sad</button>
 </body>
 <script>
     var cn = document.getElementById('canvas')
     var face = cn.getContext('2d')
 
     var happy = true
- //  main face
+    //  main face
     face.beginPath()
     face.fillStyle = 'yellow'
     face.arc(200, 170, 150, 0, Math.PI * 2)
     face.fill()
     face.closePath()
 
- // left eye path
+    // left eye path
     face.beginPath()
     face.fillStyle = "white";
     face.arc(130, 140, 15, 0, Math.PI * 2);
@@ -35,7 +44,7 @@
     face.stroke()
     face.closePath()
 
-//  right eye part
+    //  right eye part
     face.beginPath()
     face.fillStyle = "white";
     face.arc(270, 140, 15, 0, Math.PI * 2);
@@ -47,14 +56,14 @@
     face.arc(270, 140, 5, 0, Math.PI * 2);
     face.fill()
     face.closePath()
-   
+
     //    eyebrow
     face.beginPath()
     face.strokeStyle = "black";
     face.arc(270, 135, 17, 0, Math.PI, true);
     face.stroke()
     face.closePath()
- // smile 
+    // smile 
     var ctx = cn.getContext('2d')
     face.beginPath()
     face.strokeStyle = 'black'
@@ -69,20 +78,30 @@
     // toggle
 
     function Toggle(a) {
+
         var msg = document.getElementById('btn').innerHTML
         if (msg === 'happy') {
             document.getElementById('btn').innerHTML = 'sad'
             face.fillStyle = "yellow";
-            face.clearRect(100, 180, 200, 100)
-            face.fillRect(100, 180, 200, 100)
-            face.fill()
-            ctx.moveTo(200,300)
-            ctx.strokeStyle = 'red'
-            ctx.arc(200, 300, 90, 0, Math.PI*(1.1),false )
-            ctx.stroke()
+            face.clearRect(100, 170, 200, 110)
+            face.fillRect(100, 170, 200, 110)
+            face.beginPath()
+            face.strokeStyle = 'black'
+            face.arc(200, 180, 90, 0, Math.PI)
+            face.lineWidth = 3
+            face.stroke()
+            face.closePath()
 
         } else {
             document.getElementById('btn').innerHTML = 'happy'
+            face.fillStyle = "yellow";
+            face.clearRect(100, 170, 200, 110)
+            face.fillRect(100, 170, 200, 110)
+            face.beginPath()
+            face.strokeStyle = "black";
+            face.arc(200, 270, 90, 0, Math.PI, true);
+            face.stroke()
+            face.closePath()
         }
     }
 </script>
